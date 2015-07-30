@@ -39,4 +39,37 @@ Anonymous functions are closures, so they can hold variables inside their scope.
 
 # Linked lists
 
+A list of values (of any type) in Elixir is defined by enclosing square brackets, and values separated by comma. `[1,2,3,true]`
+
+You can concatenated and subtract lists with `++` and `--` operator.
+
+You can retrieve the head and the tail of the list with `hd` and `tl`.
+
+Note that char lists (`'hello'`) and strings (`"hello"`) are different types.
+
+
+# Tuples
+
+Tuples are defined by enclosing curly braces, and they can hold any value, like lists.
+
+`{:ok, "Hello"}`
+
+There is a helper called `tuple_size`.
+
+Tuples are stored in memory, so accessing at a tuples index or getting its size is a fast operation.
+
+Btw, you can access a tuple at a specific index with `elem`:
+
+```
+tuple = {:ok, "Hello"}
+
+elem tuple, 1
+  -> "Hello"
+```
+
+You can also change the value of a tuple at a specific index with `put_elem` (it does not modify the original structure, rather returns a new one).
+
+This leads us to the conclusion that data types in Elixir are immutable, which means that your effectively cannot modify state, without creating a copy of it.
+
+
 
