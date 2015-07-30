@@ -72,4 +72,12 @@ You can also change the value of a tuple at a specific index with `put_elem` (it
 This leads us to the conclusion that data types in Elixir are immutable, which means that your effectively cannot modify state, without creating a copy of it.
 
 
+# Lists or tuples?
+
+Lists are stored as linked lists in memory, so counting and appending is a linear operation on the data structure.
+
+Tuples are stored as a whole in memory, so access is fast but modification requires a copy in memory.
+
+These characteristics determine their use in Elixir/Erlang code. A common use case for tuples is to return extra information from a function.
+
 
