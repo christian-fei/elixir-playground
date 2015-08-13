@@ -36,6 +36,8 @@ defmodule SimpleRegistry do
   end
 
   def handle_info({:DOWN, ref, :process, _pid, _reason}, {names, refs}) do
+    IO.puts "MAN DOWN!"
+    IO.inspect ref
     {name, refs} = HashDict.pop(refs, ref)
     names = HashDict.delete(names, name)
 
