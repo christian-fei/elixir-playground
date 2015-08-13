@@ -7,13 +7,13 @@ defmodule HashDictBucketTest do
   end
 
   test "gets elements in bucket", %{bucket: bucket} do
-    assert HashDict.new == HashDictBucket.get bucket
+    expected = HashDict.new
+    assert expected == HashDictBucket.get bucket
   end
 
   test "puts element in bucket", %{bucket: bucket} do
     HashDictBucket.put bucket, :bread, 1
-    expected = HashDict.new
-    expected = HashDict.put(expected, :bread, 1)
+    expected = HashDict.put(HashDict.new, :bread, 1)
     assert expected == HashDictBucket.get bucket
   end
 end
