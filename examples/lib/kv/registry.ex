@@ -1,4 +1,4 @@
-defmodule SimpleRegistry do
+defmodule KV.Registry do
   use GenServer
 
   def start_link(options \\ []) do
@@ -27,11 +27,11 @@ defmodule SimpleRegistry do
     if HashDict.has_key?(names, name) do
       {:reply, :error, {refs,names}}
     else
-      {:ok, bucket_pid} = Bucket.start_link
-      ref = Process.monitor(bucket_pid)
+      {:ok, bucket} = KV.Bucket.start_link
+      ref = Process.monitor(bucket)
       refs = HashDict.put(refs, ref, name)
-      names = HashDict.put(names, name, bucket_pid)
-      {:reply, bucket_pid, {refs, names}}
+      names = HashDict.put(names, name, bucket)
+      {:reply, bucket, {refs, names}}
     end
   end
 
